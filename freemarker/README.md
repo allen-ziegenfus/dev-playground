@@ -101,7 +101,7 @@
 <h3>
 	Using the built-in ?eval</h3>
 <p>
-	Using ?eval on a String that includes JSON will convert it like a literal to a Freemarker hash. As the name implies, Freemarker also evaluates any expressions in the String, which may or may not be what you want. For example, the reference ${name} is resolved:</p>
+	Using ?eval on a String that includes JSON will convert it like a literal to a Freemarker hash. As the name implies, Freemarker also evaluates any expressions in the String, which may or may not be what you want. For example, the reference ${name} is resolved, so the word "junk" appears in the output, even though it is not resolved through the assign tag (here I explicitly broke up the reference to show that ?eval is resolving it):</p>
 <div style="border: 1.0px solid black;padding: 10.0px;background-color: white;font-family: Menlo , Monaco , &quot;Courier New&quot; , monospace;font-size: 12.0px;line-height: 18.0px;">
 	<div>
 		<span style="color: rgb(128,0,0);">&lt;h1&gt;</span>Simple deserialization with eval<span style="color: rgb(128,0,0);">&lt;/h1&gt;</span></div>
@@ -144,7 +144,7 @@
 <h3>
 	Create a JSONObject with the Liferay jsonFactoryUtil</h3>
 <p>
-	With the jsonFactoryUtil we can also pass a JSON string and get a JSONObject. This will not resolve any references, but has the downside that we can't use expression language references with the resulting object. Instead we have to use the JSONObject methods like getString:</p>
+	With the jsonFactoryUtil we can also pass a JSON string and get a JSONObject. This will not resolve any references (so no "junk"), but has the downside that we can't use expression language references with the resulting object. Instead we have to use the JSONObject methods like getString:</p>
 <div style="border: 1.0px solid black;padding: 10.0px;background-color: white;font-family: Menlo , Monaco , &quot;Courier New&quot; , monospace;font-size: 12.0px;line-height: 18.0px;">
 	<div>
 		<span style="color: rgb(128,0,0);">&lt;h1&gt;</span>Deserialization with JSONObject<span style="color: rgb(128,0,0);">&lt;/h1&gt;</span></div>
@@ -173,13 +173,27 @@
 	The deserialization methods of jsonFactoryUtil will return back an object that is apparently automagically mapped to a Freemarker hash. This makes referencing even nested JSON data easy and "natural", and you can also use the standard Freemarker operators to check for values or provide default values (!):</p>
 <div style="border: 1.0px solid black;padding: 10.0px;background-color: white;font-family: Menlo , Monaco , &quot;Courier New&quot; , monospace;font-size: 12.0px;line-height: 18.0px;">
 	<div>
-		<span style="color: rgb(128,0,0);">&lt;h1&gt;</span>Deserialization with Freemarker Hash<span style="color: rgb(128,0,0);">&lt;/h1&gt;</span></div>
-	<div>
-		&lt;#<span style="color: rgb(121,94,38);">assign</span><span style="color: rgb(0,16,128);"> beer_hashmap = jsonFactoryUtil.looseDeserializeSafe(beer_json_string_with_reference) </span>&gt;</div>
-	<div>
-		<span style="color: rgb(128,0,0);">&lt;div&gt;</span><span style="color: rgb(0,16,128);">${beer_hashmap.name}</span><span style="color: rgb(128,0,0);">&lt;/div&gt;</span></div>
-	<div>
-		<span style="color: rgb(128,0,0);">&lt;div&gt;</span><span style="color: rgb(0,16,128);">${beer_hashmap.description}</span><span style="color: rgb(128,0,0);">&lt;/div&gt;</span></div>
+		<div style="color: rgb(0,0,0);line-height: 18.0px;white-space: pre;">
+			<div>
+				<span style="color: rgb(128,0,0);">&lt;h1&gt;</span>Deserialization with Freemarker Hash<span style="color: rgb(128,0,0);">&lt;/h1&gt;</span></div>
+			<div>
+				&lt;#<span style="color: rgb(121,94,38);">assign</span><span style="color: rgb(0,16,128);"> beer_hashmap = jsonFactoryUtil.looseDeserializeSafe(beer_json_string_with_reference) </span>&gt;</div>
+			<div>
+				<span style="color: rgb(128,0,0);">&lt;div&gt;</span><span style="color: rgb(0,16,128);">${beer_hashmap.name}</span><span style="color: rgb(128,0,0);">&lt;/div&gt;</span></div>
+			<div>
+				<span style="color: rgb(128,0,0);">&lt;div&gt;</span><span style="color: rgb(0,16,128);">${beer_hashmap.description}</span><span style="color: rgb(128,0,0);">&lt;/div&gt;</span></div>
+			<div>
+				<span style="color: rgb(128,0,0);">&lt;div&gt;</span><span style="color: rgb(0,16,128);">${(beer_hashmap.notthere)</span><span style="color: rgb(121,94,38);">!</span><span style="color: rgb(0,16,128);">}</span><span style="color: rgb(128,0,0);">&lt;/div&gt;</span></div>
+			<div>
+				&lt;#<span style="color: rgb(121,94,38);">if</span><span style="color: rgb(0,16,128);"> beer_hashmap.name??</span>&gt;</div>
+			<div>
+				<div style="line-height: 18.0px;">
+					<span style="color: rgb(0,16,128);">${beer_hashmap.name}</span> exists!</div>
+			</div>
+			<div>
+				&lt;/#<span style="color: rgb(121,94,38);">if</span>&gt;</div>
+		</div>
+	</div>
 	<div>
 		&nbsp;</div>
 </div>
@@ -188,9 +202,13 @@
 <p>
 	Output:&nbsp;</p>
 <div style="background-color: rgb(255,255,255);">
-	Imperial Stout</div>
-<div style="background-color: rgb(255,255,255);">
-	Tasty ${name} Stout Beer</div>
+	<div>
+		Imperial Stout</div>
+	<div>
+		Tasty ${name} Stout Beer</div>
+	<div>
+		&nbsp;</div>
+	IImperial Stout exists!</div>
 <div style="background-color: rgb(255,255,255);">
 	&nbsp;</div>
 <h2>
@@ -229,7 +247,7 @@
 <h2>
 	&nbsp;</h2>
 <p>
-	<img alt="" src="https://raw.githubusercontent.com/allen-ziegenfus/dev-playground/master/freemarker/browser_output.jpg" style="height: 59px; width: 500px;" /></p>
+	<img alt="" src="https://raw.githubusercontent.com/allen-ziegenfus/dev-playground/master/freemarker/browser_output.jpg" style="height: 119.0px;width: 600.0px;" /></p>
 <h2>
 	Bringing it all together</h2>
 <p>

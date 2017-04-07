@@ -21,3 +21,7 @@
 <#assign beer_hashmap = jsonFactoryUtil.looseDeserializeSafe(beer_json_string_with_reference) >
 <div>${beer_hashmap.name}</div>
 <div>${beer_hashmap.description}</div>
+<div>${(beer_hashmap.notthere)!}</div>
+<#if beer_hashmap.name??>
+     ${beer_hashmap.name} exists!
+</#if>
