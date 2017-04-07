@@ -11,12 +11,16 @@
 	<#list beer_info.ingredients?keys as ingredient_type>
 
 		<h3>${ingredient_type}</h3>
+		<ul>
 		<#if beer_info.ingredients[ingredient_type]?is_sequence>
+		
 			<#list beer_info.ingredients[ingredient_type] as ingredients>
-				<div> ${ingredients.name} </div>
+				<li> ${ingredients.name} </li>
 			</#list>
+			
 		<#else>
-			${beer_info.ingredients[ingredient_type]}
+			<li>${beer_info.ingredients[ingredient_type]}</li>
 		</#if>
+		</ul>
 	</#list>
 </#list>
