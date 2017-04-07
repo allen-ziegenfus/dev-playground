@@ -1,5 +1,5 @@
 <p>
-	Freemarker has some nice native support for working with JSON. And with the help of a few Liferay utility classes, it's very easy to even consume JSON web services from Freemarker.&nbsp;</p>
+	Freemarker has some nice native support for working with JSON. And with the help of a few Liferay utility classes, it's very easy to even consume JSON web services from Freemarker. Note: you can view all of the example code on github:&nbsp;<a href="https://github.com/allen-ziegenfus/dev-playground/tree/master/freemarker">https://github.com/allen-ziegenfus/dev-playground/tree/master/freemarker</a></p>
 <h2>
 	Converting JSON to Freemarker types</h2>
 <p>
