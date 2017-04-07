@@ -10,7 +10,7 @@
 	<div>
 		<span style="color: rgb(0,128,0);">&lt;#-- Freemarker hash from JSON literal --&gt;</span></div>
 	<div>
-		&lt;#<span style="color: rgb(121,94,38);">assign</span><span style="color: rgb(0,16,128);"> beer_map = { &quot;name&quot;: &quot;Imperial Stout&quot;, &quot;description&quot;: &quot;Tasty Stout Beer&quot;} </span>&gt;</div>
+		&lt;#<span style="color: rgb(121,94,38);">assign</span><span style="color: rgb(0,16,128);"> beer_map = { "name": "Imperial Stout", "description": "Tasty Stout Beer"} </span>&gt;</div>
 	<div>
 		<span style="color: rgb(128,0,0);">&lt;div&gt;</span><span style="color: rgb(0,16,128);">${beer_map.name}</span><span style="color: rgb(128,0,0);">&lt;/div&gt;</span></div>
 	<div>
@@ -32,7 +32,7 @@
 	<div>
 		<span style="color: rgb(0,128,0);">&lt;#-- Freemarker array from JSON literal --&gt;</span></div>
 	<div>
-		&lt;#<span style="color: rgb(121,94,38);">assign</span><span style="color: rgb(0,16,128);"> food_pairing_array = [&quot;Salmon&quot;, &quot;Pizza with Taleggio&quot;</span>] &gt;</div>
+		&lt;#<span style="color: rgb(121,94,38);">assign</span><span style="color: rgb(0,16,128);"> food_pairing_array = ["Salmon", "Pizza with Taleggio"</span>] &gt;</div>
 	<div>
 		&lt;#<span style="color: rgb(121,94,38);">list</span><span style="color: rgb(0,16,128);"> food_pairing_array as food_pairing</span>&gt;</div>
 	<div>
@@ -60,15 +60,15 @@
 	<div>
 		&nbsp;&nbsp;&nbsp;&nbsp;{ &nbsp;&nbsp;</div>
 	<div>
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;name&quot;: &quot;Imperial Stout&quot;,</div>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"name": "Imperial Stout",</div>
 	<div>
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;description&quot;: &quot;Tasty Stout Beer&quot;,</div>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"description": "Tasty Stout Beer",</div>
 	<div>
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;food_pairing&quot;: [</div>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"food_pairing": [</div>
 	<div>
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;Salmon&quot;,</div>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"Salmon",</div>
 	<div>
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;Pizza with Taleggio&quot;</div>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"Pizza with Taleggio"</div>
 	<div>
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]</div>
 	<div>
@@ -106,7 +106,7 @@
 	<div>
 		<span style="color: rgb(128,0,0);">&lt;h1&gt;</span>Simple deserialization with eval<span style="color: rgb(128,0,0);">&lt;/h1&gt;</span></div>
 	<div>
-		&lt;#<span style="color: rgb(121,94,38);">assign</span><span style="color: rgb(0,16,128);"> beer_json_string = &quot;{ \&quot;name\&quot;: \&quot;Imperial Stout\&quot;, \&quot;description\&quot;: \&quot;Tasty Stout Beer\&quot;}&quot;</span>&gt;</div>
+		&lt;#<span style="color: rgb(121,94,38);">assign</span><span style="color: rgb(0,16,128);"> beer_json_string = "{ \"name\": \"Imperial Stout\", \"description\": \"Tasty Stout Beer\"}"</span>&gt;</div>
 	<div>
 		&lt;#<span style="color: rgb(121,94,38);">assign</span><span style="color: rgb(0,16,128);"> beer_map = beer_json_string?eval</span>&gt;</div>
 	<div>
@@ -117,9 +117,9 @@
 	<div>
 		<span style="color: rgb(128,0,0);">&lt;h1&gt;</span> Simple deserialization with eval, resolving references<span style="color: rgb(128,0,0);">&lt;/h1&gt;</span></div>
 	<div>
-		&lt;#<span style="color: rgb(121,94,38);">assign</span><span style="color: rgb(0,16,128);"> name=&quot;junk&quot;</span>&gt;</div>
+		&lt;#<span style="color: rgb(121,94,38);">assign</span><span style="color: rgb(0,16,128);"> name="junk"</span>&gt;</div>
 	<div>
-		&lt;#<span style="color: rgb(121,94,38);">assign</span><span style="color: rgb(0,16,128);"> beer_json_string_with_reference = &quot;{ \&quot;name\&quot;: \&quot;Imperial Stout\&quot;, \&quot;description\&quot;: \&quot;Tasty &quot; + &quot;${&quot; + &quot;name} Stout Beer\&quot;}&quot;</span>&gt;</div>
+		&lt;#<span style="color: rgb(121,94,38);">assign</span><span style="color: rgb(0,16,128);"> beer_json_string_with_reference = "{ \"name\": \"Imperial Stout\", \"description\": \"Tasty " + "${" + "name} Stout Beer\"}"</span>&gt;</div>
 	<div>
 		&lt;#<span style="color: rgb(121,94,38);">assign</span><span style="color: rgb(0,16,128);"> beer_map_with_ref = beer_json_string_with_reference?eval</span>&gt;</div>
 	<div>
@@ -151,9 +151,9 @@
 	<div>
 		&lt;#<span style="color: rgb(121,94,38);">assign</span><span style="color: rgb(0,16,128);"> liferay_beer_map = jsonFactoryUtil.createJSONObject(beer_json_string_with_reference)</span>&gt;</div>
 	<div>
-		<span style="color: rgb(128,0,0);">&lt;div&gt;</span><span style="color: rgb(0,16,128);">${liferay_beer_map.getString(</span><span style="color: rgb(121,94,38);">&quot;name&quot;)</span><span style="color: rgb(0,16,128);">}</span><span style="color: rgb(128,0,0);">&lt;/div&gt;</span></div>
+		<span style="color: rgb(128,0,0);">&lt;div&gt;</span><span style="color: rgb(0,16,128);">${liferay_beer_map.getString(</span><span style="color: rgb(121,94,38);">"name")</span><span style="color: rgb(0,16,128);">}</span><span style="color: rgb(128,0,0);">&lt;/div&gt;</span></div>
 	<div>
-		<span style="color: rgb(128,0,0);">&lt;div&gt;</span><span style="color: rgb(0,16,128);">${liferay_beer_map.getString(</span><span style="color: rgb(121,94,38);">&quot;description&quot;)</span><span style="color: rgb(0,16,128);">}</span><span style="color: rgb(128,0,0);">&lt;/div&gt;</span></div>
+		<span style="color: rgb(128,0,0);">&lt;div&gt;</span><span style="color: rgb(0,16,128);">${liferay_beer_map.getString(</span><span style="color: rgb(121,94,38);">"description")</span><span style="color: rgb(0,16,128);">}</span><span style="color: rgb(128,0,0);">&lt;/div&gt;</span></div>
 	<div>
 		&nbsp;</div>
 </div>
@@ -170,7 +170,7 @@
 <h3>
 	Deserialization with jsonFactoryUtil</h3>
 <p>
-	The deserialization methods of jsonFactoryUtil will return back an object that is apparently automagically mapped to a Freemarker hash. This makes referencing even nested JSON data easy and &quot;natural&quot;, and you can also use the standard Freemarker operators to check for values or provide default values (!):</p>
+	The deserialization methods of jsonFactoryUtil will return back an object that is apparently automagically mapped to a Freemarker hash. This makes referencing even nested JSON data easy and "natural", and you can also use the standard Freemarker operators to check for values or provide default values (!):</p>
 <div style="border: 1.0px solid black;padding: 10.0px;background-color: white;font-family: Menlo , Monaco , &quot;Courier New&quot; , monospace;font-size: 12.0px;line-height: 18.0px;">
 	<div>
 		<span style="color: rgb(128,0,0);">&lt;h1&gt;</span>Deserialization with Freemarker Hash<span style="color: rgb(128,0,0);">&lt;/h1&gt;</span></div>
@@ -203,15 +203,15 @@
 	<div>
 		&nbsp;&nbsp;&nbsp;&nbsp;{ &nbsp;&nbsp;</div>
 	<div>
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;name&quot;: &quot;Imperial Stout&quot;,</div>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"name": "Imperial Stout",</div>
 	<div>
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;description&quot;: &quot;Tasty Stout Beer&quot;,</div>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"description": "Tasty Stout Beer",</div>
 	<div>
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;food_pairing&quot;: [</div>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"food_pairing": [</div>
 	<div>
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;Salmon&quot;,</div>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"Salmon",</div>
 	<div>
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;Pizza with Taleggio&quot;</div>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"Pizza with Taleggio"</div>
 	<div>
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]</div>
 	<div>
@@ -229,16 +229,16 @@
 <h2>
 	&nbsp;</h2>
 <p>
-	&nbsp;</p>
+	<img alt="" src="https://raw.githubusercontent.com/allen-ziegenfus/dev-playground/master/freemarker/browser_output.jpg" style="height: 59px; width: 500px;" /></p>
 <h2>
 	Bringing it all together</h2>
 <p>
-	Finally, these techniques can be combined with using the httpUtil to fetch JSON data to pull JSON data from external services and create markup in Freemarker. Here is an example using the &quot;Beer&quot; api at https://punkapi.com/</p>
+	Finally, these techniques can be combined with using the httpUtil to fetch JSON data to pull JSON data from external services and create markup in Freemarker. Here is an example using the "Beer" api at https://punkapi.com/</p>
 <p>
 	&nbsp;</p>
 <div style="border: 1.0px solid black;padding: 10.0px;background-color: white;font-family: Menlo , Monaco , &quot;Courier New&quot; , monospace;font-size: 12.0px;line-height: 18.0px;">
 	<div>
-		&lt;#<span style="color: rgb(121,94,38);">assign</span><span style="color: rgb(0,16,128);"> response = httpUtil.URLtoString(&quot;http://api.punkapi.com/v2/beers/random&quot;)</span>&gt;</div>
+		&lt;#<span style="color: rgb(121,94,38);">assign</span><span style="color: rgb(0,16,128);"> response = httpUtil.URLtoString("http://api.punkapi.com/v2/beers/random")</span>&gt;</div>
 	<br />
 	<div>
 		&lt;#<span style="color: rgb(121,94,38);">assign</span><span style="color: rgb(0,16,128);"> beers_info = jsonFactoryUtil.looseDeserializeSafe(response) </span>&gt;</div>
@@ -303,7 +303,7 @@
 			yeast</h3>
 		<ul style="padding-left: 0.0px;background-color: rgb(255,255,255);">
 			<li>
-				Wyeast 2007 - Pilsen Lager&trade;</li>
+				Wyeast 2007 - Pilsen Lager™</li>
 		</ul>
 		<h3 style="font-size: 1.75em;background-color: rgb(255,255,255);">
 			hops</h3>
