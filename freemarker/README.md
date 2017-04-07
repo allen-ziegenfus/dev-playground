@@ -65,9 +65,8 @@
 </div>
 <p>
 	But what if we have JSON in a String object? In this case there are a couple approaches:</p>
-<p>
-	<span style="font-size: 1.333em;">Using the built-in ?eval</span></p>
-<p>
+
+<h3>Using the built-in ?eval</h3>
 	Using ?eval on a String that includes JSON will convert it like a literal to a Freemarker hash. As the name implies, Freemarker also evaluates any expressions in the String, which may or may not be what you want. For example, the reference ${name} is resolved:</p>
 <div style="border: 1px solid black; padding: 10px; background-color: white;font-family: Menlo , Monaco , &quot;Courier New&quot; , monospace;font-size: 12.0px;line-height: 18.0px;">
 	<div>
@@ -93,14 +92,13 @@
 		<span style="color: rgb(128,0,0);">&lt;div&gt;</span><span style="color: rgb(0,16,128);">${beer_map_with_ref.name}</span><span style="color: rgb(128,0,0);">&lt;/div&gt;</span></div>
 	<div>
 		<span style="color: rgb(128,0,0);">&lt;div&gt;</span><span style="color: rgb(0,16,128);">${beer_map_with_ref.description}</span><span style="color: rgb(128,0,0);">&lt;/div&gt;</span></div>
-	<div>
-		&nbsp;</div>
-	<h3>
-		<span style="font-size: 1.333em;color: rgb(76,76,78);font-family: source-sans-pro , Arial , Helvetica , sans-serif;">Create a JSONObject with the Liferay jsonFactoryUtil</span></h3>
 </div>
+
+
+<h3>Create a JSONObject with the Liferay jsonFactoryUtil</span></h3>
 <p>
 	With the jsonFactoryUtil we can also pass a JSON string and get a JSONObject. This will not resolve any references, but has the downside that we can't use expression language references with the resulting object. Instead we have to use the JSONObject methods like getString:</p>
-<div style="color: rgb(0,0,0);background-color: rgb(255,255,255);font-family: Menlo , Monaco , &quot;Courier New&quot; , monospace;font-size: 12.0px;line-height: 18.0px;white-space: pre;">
+<div style="border: 1px solid black; padding: 10px; background-color: white;font-family: Menlo , Monaco , &quot;Courier New&quot; , monospace;font-size: 12.0px;line-height: 18.0px;">
 	<div>
 		<span style="color: rgb(128,0,0);">&lt;h1&gt;</span>Deserialization with JSONObject<span style="color: rgb(128,0,0);">&lt;/h1&gt;</span></div>
 	<div>
@@ -116,7 +114,7 @@
 	Deserialization with jsonFactoryUtil</h3>
 <p>
 	The deserialization methods of jsonFactoryUtil will return back an object that is apparently automagically mapped to a Freemarker hash. This makes referencing even nested JSON data easy and "natural", and you can also use the standard Freemarker operators to check for values or provide default values (!):</p>
-<div style="color: rgb(0,0,0);background-color: rgb(255,255,255);font-family: Menlo , Monaco , &quot;Courier New&quot; , monospace;font-size: 12.0px;line-height: 18.0px;white-space: pre;">
+<div style="border: 1px solid black; padding: 10px; background-color: white;font-family: Menlo , Monaco , &quot;Courier New&quot; , monospace;font-size: 12.0px;line-height: 18.0px;">
 	<div>
 		<span style="color: rgb(128,0,0);">&lt;h1&gt;</span>Deserialization with Freemarker Hash<span style="color: rgb(128,0,0);">&lt;/h1&gt;</span></div>
 	<div>
@@ -132,7 +130,7 @@
 	Converting Freemarker Objects to JSON</h2>
 <p>
 	To go the other direction was can also use our friend jsonFactoryUtil. In this case I instantiate a Freemarker hash with a literal, and then output the JSON to the browser console.</p>
-<div style="color: rgb(0,0,0);background-color: rgb(255,255,255);font-family: Menlo , Monaco , &quot;Courier New&quot; , monospace;font-size: 12.0px;line-height: 18.0px;white-space: pre;">
+<div style="border: 1px solid black; padding: 10px; background-color: white;font-family: Menlo , Monaco , &quot;Courier New&quot; , monospace;font-size: 12.0px;line-height: 18.0px;">
 	<div>
 		&lt;#assign complex_beer_map =</div>
 	<div>
@@ -160,10 +158,7 @@
 		&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: rgb(38,127,153);">console</span>.<span style="color: rgb(121,94,38);">log</span>(<span style="color: rgb(0,16,128);">beerMap</span>);</div>
 	<div>
 		<span style="color: rgb(128,0,0);">&lt;/script&gt;</span></div>
-	<div>
-		&nbsp;</div>
-	<h2>
-		&nbsp;</h2>
+</div>
 	<h2>
 		Bringing it all together</h2>
 	<p>
@@ -171,7 +166,7 @@
 </div>
 <p>
 	&nbsp;</p>
-<div style="color: rgb(0,0,0);background-color: rgb(255,255,255);font-family: Menlo , Monaco , &quot;Courier New&quot; , monospace;font-size: 12.0px;line-height: 18.0px;white-space: pre;">
+<div style="border: 1px solid black; padding: 10px; background-color: white;font-family: Menlo , Monaco , &quot;Courier New&quot; , monospace;font-size: 12.0px;line-height: 18.0px;">
 	<div>
 		&lt;#<span style="color: rgb(121,94,38);">assign</span><span style="color: rgb(0,16,128);"> response = httpUtil.URLtoString("http://api.punkapi.com/v2/beers/random")</span>&gt;</div>
 	<br />
