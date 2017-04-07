@@ -3,7 +3,6 @@
 <#assign beers_info = jsonFactoryUtil.looseDeserializeSafe(response) >
 
 <#list beers_info as beer_info>
-	<img src="${beer_info.image_url}"></img>
 	<h1>${beer_info.name}</h1>
 	<div>${beer_info.description}</div>
 
