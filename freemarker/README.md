@@ -214,7 +214,7 @@
 <h2>
 	Converting Freemarker Objects to JSON</h2>
 <p>
-	To go the other direction was can also use our friend jsonFactoryUtil. In this case I instantiate a Freemarker hash with a literal, and then output the JSON to the browser console.</p>
+	To go the other direction we can also use our friend jsonFactoryUtil. In this case I instantiate a Freemarker hash with a literal, and then output the JSON to the browser console.</p>
 <div style="border: 1.0px solid black;padding: 10.0px;background-color: white;font-family: Menlo , Monaco , &quot;Courier New&quot; , monospace;font-size: 12.0px;line-height: 18.0px;">
 	<div>
 		&lt;#assign complex_beer_map =</div>
@@ -251,7 +251,7 @@
 <h2>
 	Bringing it all together</h2>
 <p>
-	Finally, these techniques can be combined with using the httpUtil to fetch JSON data to pull JSON data from external services and create markup in Freemarker. Here is an example using the "Beer" api at https://punkapi.com/</p>
+	Finally, these techniques can be combined with using the httpUtil to pull JSON data from external services and create markup in Freemarker. Here is an example using the "Beer" api at https://punkapi.com/</p>
 <p>
 	&nbsp;</p>
 <div style="border: 1.0px solid black;padding: 10.0px;background-color: white;font-family: Menlo , Monaco , &quot;Courier New&quot; , monospace;font-size: 12.0px;line-height: 18.0px;">
