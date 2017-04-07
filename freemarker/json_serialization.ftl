@@ -9,7 +9,6 @@
 	} >
 
 <script>
-	var jsonResponse = ${response};
 	var beerMap = ${jsonFactoryUtil.looseSerializeDeep(complex_beer_map)};
 	console.log(beerMap);
 </script>

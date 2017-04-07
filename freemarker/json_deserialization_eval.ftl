@@ -12,11 +12,6 @@
 <div>${beer_map_with_ref.name}</div>
 <div>${beer_map_with_ref.description}</div>
 
-<h1>Simple deserialization with eval, resolving references error</h1>
-<#assign content_json_string = "{ \"content\": \"\n\t\n\t\n\t\n\t\n\t\n\t\n\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t \"}">
-<#assign content_map = content_json_string?eval>
-<div>${content_map.content}</div>
-
 <h1>Deserialization with JSONObject</h1>
 <#assign liferay_beer_map = jsonFactoryUtil.createJSONObject(beer_json_string_with_reference)>
 <div>${liferay_beer_map.getString("name")}</div>
